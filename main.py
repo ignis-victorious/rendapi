@@ -31,8 +31,11 @@ class AccisePercentages(BaseModel):
     accise: list[int] = [227, 125, 75]
 
 
-accise_percentages: list[AccisePercentages] = []
-# accise_percentage: list[AccisePercentages] = [AccisePercentages(date=date(2024, 1, 1), accise=[227, 125, 75]),AccisePercentages(date=date(2025, 1, 1), accise=[227, 125, 75]),]
+# accise_percentages: list[AccisePercentages] = []
+accise_percentage: list[AccisePercentages] = [
+    AccisePercentages(date=date(2024, 1, 1), accise=[227, 125, 75]),
+    AccisePercentages(date=date(2025, 1, 1), accise=[227, 125, 75]),
+]
 
 # print(IvaPercentages(date=date.today(), iva=[0, 10, 22]))
 # print(AccisePercentages(date=date.today(), iva=[227, 125, 75]))
