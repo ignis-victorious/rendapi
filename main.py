@@ -12,17 +12,33 @@ app = FastAPI()
 
 
 #  CLASSES
+# IVA
 class IvaPercentages(BaseModel):
     date: date  # datetime
     iva: list[int] = [0, 10, 22]
 
 
-ivas: list[IvaPercentages] = []
+# ivas: list[IvaPercentages] = []
+iva_pecentages: list[IvaPercentages] = [
+    IvaPercentages(date=date(2024, 1, 1), iva=[0, 10, 22]),
+    IvaPercentages(date=date(2025, 1, 1), iva=[0, 10, 22]),
+]
+
+
+# ACCISE
+class AccisePercentages(BaseModel):
+    date: date  # datetime
+    accise: list[int] = [227, 125, 75]
+
+
+accise_percentages: list[AccisePercentages] = []
+# accise_percentage: list[AccisePercentages] = [AccisePercentages(date=date(2024, 1, 1), accise=[227, 125, 75]),AccisePercentages(date=date(2025, 1, 1), accise=[227, 125, 75]),]
+
+# print(IvaPercentages(date=date.today(), iva=[0, 10, 22]))
+# print(AccisePercentages(date=date.today(), iva=[227, 125, 75]))
 
 
 #  FUNCTIONS
-
-
 #  ---  Root  ---
 @app.get("/")
 async def root() -> dict[str, str]:
@@ -39,13 +55,26 @@ async def ee() -> dict[str, str]:
 @app.post("/ee/ivas", response_model=IvaPercentages)
 async def add_iva(iva: IvaPercentages) -> IvaPercentages:
     iva.date = date.today()  # datetime.now()
-    ivas.append(iva)
+    iva_pecentages.append(iva)
     return iva
 
 
 @app.get("/ee/ivas", response_model=list[IvaPercentages])
 async def read_ivas() -> list[IvaPercentages]:
-    return ivas
+    return iva_pecentages
+
+
+#  ACCISE
+@app.post("/ee/accises", response_model=AccisePercentages)
+async def add_accise(accise: AccisePercentages) -> AccisePercentages:
+    accise.date = date.today()  # datetime.now()
+    accise_percentages.append(accise)
+    return accise
+
+
+@app.get("/ee/accises", response_model=list[AccisePercentages])
+async def read_accises() -> list[AccisePercentages]:
+    return accise_percentages
 
 
 #  ---  Gas  ---
