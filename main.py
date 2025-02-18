@@ -640,7 +640,7 @@ async def add_gas_addiz_civ(
     return addiz_civ
 
 
-@app.post("/gas/addizciv", response_model=AddizionaleGasCivilePercentages)
+@app.get("/gas/addizciv", response_model=AddizionaleGasCivilePercentages)
 async def read_gas_addiz_civ() -> list[AddizionaleGasCivilePercentages]:
     return addizionale_gas_civile_percentages
 
@@ -655,7 +655,7 @@ async def add_gas_addiz_ind(
     return addiz_ind
 
 
-@app.post("/gas/addizind", response_model=AddizionaleGasIndustrialePercentages)
+@app.get("/gas/addizind", response_model=AddizionaleGasIndustrialePercentages)
 async def read_gas_addiz_ind() -> list[AddizionaleGasIndustrialePercentages]:
     return addizionale_gas_industriale_percentages
 
