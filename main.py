@@ -116,10 +116,10 @@ class AddizionaleGasCivilePercentages(BaseModel):
     date: date  # datetime
     region: list[str]
     scaglione_civ: list[int]  # [120, 480, 1560, 9999]
-    addzionale_120: list[int]  # >120m3,
-    addzionale_480: list[int]  # 120-480 m3
-    addzionale_1560: list[int]  # 480-1.560 m3
-    addzionale_9999: list[int]  # > 1.560 m3
+    addizionale_120: list[int]  # >120m3,
+    addizionale_480: list[int]  # 120-480 m3
+    addizionale_1560: list[int]  # 480-1.560 m3
+    addizionale_9999: list[int]  # > 1.560 m3
 
 
 # addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = []
@@ -151,7 +151,7 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
             "Veneto",
         ],
         scaglione_civ=[120, 480, 1560, 9999],
-        addzionale_120=[
+        addizionale_120=[
             19000,
             10330,
             19000,
@@ -176,7 +176,7 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
             0,
             7747,
         ],
-        addzionale_480=[
+        addizionale_480=[
             23241,
             10330,
             25823,
@@ -201,7 +201,7 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
             0,
             23241,
         ],
-        addzionale_1560=[
+        addizionale_1560=[
             25823,
             10330,
             25823,
@@ -226,7 +226,7 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
             0,
             25823,
         ],
-        addzionale_9999=[
+        addizionale_9999=[
             25823,
             10330,
             25823,
@@ -279,7 +279,7 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
             "Veneto",
         ],
         scaglione_civ=[120, 480, 1560, 9999],
-        addzionale_120=[
+        addizionale_120=[
             19000,
             10330,
             19000,
@@ -304,7 +304,7 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
             0,
             7747,
         ],
-        addzionale_480=[
+        addizionale_480=[
             23241,
             10330,
             25823,
@@ -329,7 +329,7 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
             0,
             23241,
         ],
-        addzionale_1560=[
+        addizionale_1560=[
             25823,
             10330,
             25823,
@@ -354,7 +354,7 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
             0,
             25823,
         ],
-        addzionale_9999=[
+        addizionale_9999=[
             25823,
             10330,
             25823,
@@ -389,8 +389,8 @@ class AddizionaleGasIndustrialePercentages(BaseModel):
     date: date
     region: list[str]
     scaglione_ind: list[int]  # [12, 9999]
-    addzionale_12: list[int]  # < 1,2 M(m3)
-    addzionale_99: list[int]  # > 1,2 M(m3)
+    addizionale_12: list[int]  # < 1,2 M(m3)
+    addizionale_99: list[int]  # > 1,2 M(m3)
 
 
 # addizionale_gas_civile_percentages: list[AddizionaleGasIndustrialePercentages] = []
@@ -422,7 +422,7 @@ addizionale_gas_industriale_percentages: list[AddizionaleGasIndustrialePercentag
             "Veneto",
         ],
         scaglione_ind=[12, 9999],
-        addzionale_12=[
+        addizionale_12=[
             6249,
             6249,
             6249,
@@ -447,7 +447,7 @@ addizionale_gas_industriale_percentages: list[AddizionaleGasIndustrialePercentag
             0,
             6249,
         ],
-        addzionale_99=[
+        addizionale_99=[
             5160,
             5160,
             5165,
@@ -500,7 +500,7 @@ addizionale_gas_industriale_percentages: list[AddizionaleGasIndustrialePercentag
             "Veneto",
         ],
         scaglione_ind=[12, 9999],
-        addzionale_12=[
+        addizionale_12=[
             6249,
             6249,
             6249,
@@ -525,7 +525,7 @@ addizionale_gas_industriale_percentages: list[AddizionaleGasIndustrialePercentag
             0,
             6249,
         ],
-        addzionale_99=[
+        addizionale_99=[
             5160,
             5160,
             5165,
