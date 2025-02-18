@@ -630,6 +630,36 @@ async def read_gas_accises() -> list[AcciseGasCivilePercentages]:
     return accise_gas_civile_percentages
 
 
+#  ADDIZIONALE CIVILE
+@app.post("/gas/addizi_civ", response_model=AddizionaleGasCivilePercentages)
+async def add_gas_addiz_civ(
+    addiz_civ: AddizionaleGasCivilePercentages,
+) -> AddizionaleGasCivilePercentages:
+    addiz_civ.date = date.today()  # datetime.now()
+    addizionale_gas_civile_percentages.append(addiz_civ)
+    return addiz_civ
+
+
+@app.post("/gas/addizi_civ", response_model=AddizionaleGasCivilePercentages)
+async def read_gas_addiz_civ() -> list[AddizionaleGasCivilePercentages]:
+    return addizionale_gas_civile_percentages
+
+
+#  ADDIZIONALE INDUSTRIALE
+@app.post("/gas/addizi_ind", response_model=AddizionaleGasIndustrialePercentages)
+async def add_gas_addiz_ind(
+    addiz_ind: AddizionaleGasIndustrialePercentages,
+) -> AddizionaleGasIndustrialePercentages:
+    addiz_ind.date = date.today()  # datetime.now()
+    addizionale_gas_industriale_percentages.append(addiz_ind)
+    return addiz_ind
+
+
+@app.post("/gas/addizi_ind", response_model=AddizionaleGasIndustrialePercentages)
+async def read_gas_addiz_ind() -> list[AddizionaleGasIndustrialePercentages]:
+    return addizionale_gas_industriale_percentages
+
+
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str | None = None):
     return {"item_id": item_id, "q": q}
