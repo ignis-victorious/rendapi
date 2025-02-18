@@ -631,7 +631,7 @@ async def read_gas_accises() -> list[AcciseGasCivilePercentages]:
 
 
 #  ADDIZIONALE CIVILE
-@app.post("/gas/addizi_civ", response_model=AddizionaleGasCivilePercentages)
+@app.post("/gas/addizciv", response_model=AddizionaleGasCivilePercentages)
 async def add_gas_addiz_civ(
     addiz_civ: AddizionaleGasCivilePercentages,
 ) -> AddizionaleGasCivilePercentages:
@@ -640,13 +640,13 @@ async def add_gas_addiz_civ(
     return addiz_civ
 
 
-@app.post("/gas/addizi_civ", response_model=AddizionaleGasCivilePercentages)
+@app.post("/gas/addizciv", response_model=AddizionaleGasCivilePercentages)
 async def read_gas_addiz_civ() -> list[AddizionaleGasCivilePercentages]:
     return addizionale_gas_civile_percentages
 
 
 #  ADDIZIONALE INDUSTRIALE
-@app.post("/gas/addizi_ind", response_model=AddizionaleGasIndustrialePercentages)
+@app.post("/gas/addizind", response_model=AddizionaleGasIndustrialePercentages)
 async def add_gas_addiz_ind(
     addiz_ind: AddizionaleGasIndustrialePercentages,
 ) -> AddizionaleGasIndustrialePercentages:
@@ -655,7 +655,7 @@ async def add_gas_addiz_ind(
     return addiz_ind
 
 
-@app.post("/gas/addizi_ind", response_model=AddizionaleGasIndustrialePercentages)
+@app.post("/gas/addizind", response_model=AddizionaleGasIndustrialePercentages)
 async def read_gas_addiz_ind() -> list[AddizionaleGasIndustrialePercentages]:
     return addizionale_gas_industriale_percentages
 
