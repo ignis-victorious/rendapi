@@ -29,13 +29,13 @@ app = FastAPI()
 # IVA EE
 class IvaEePercentages(BaseModel):
     date: date  # datetime
-    iva: list[int]  # = [0, 10, 22]
+    iva_e: list[int]  # = [0, 10, 22]
 
 
 # ivas: list[IvaPercentages] = []
 iva_ee_pecentages: list[IvaEePercentages] = [
-    IvaEePercentages(date=date(2024, 1, 1), iva=[0, 10, 22]),
-    IvaEePercentages(date=date(2025, 1, 1), iva=[0, 10, 22]),
+    IvaEePercentages(date=date(2024, 1, 1), iva_e=[0, 10, 22]),
+    IvaEePercentages(date=date(2025, 1, 1), iva_e=[0, 10, 22]),
 ]
 
 
@@ -55,12 +55,14 @@ accise_ee_percentages: list[AcciseEePercentages] = [
 # IVA GAS
 class IvaGasPercentages(BaseModel):
     date: date  # datetime
-    scaglione: list[int] = [120, 480, 1560, 9999]
-    accisa_nord: list[int] = [44, 175, 170, 186]
+    iva_g: list[int]
 
 
-iva_gas_pecentages: list[IvaGasPercentages] = []
-# iva_gas_pecentages: list[IvaGasPercentages] = [IvaGasPercentages(date=date(2024, 1, 1), iva=[0, 10, 22]), IvaGasPercentages(date=date(2025, 1, 1), iva=[0, 10, 22]),]
+# iva_gas_pecentages: list[IvaGasPercentages] = []
+iva_gas_pecentages: list[IvaGasPercentages] = [
+    IvaGasPercentages(date=date(2024, 1, 1), iva_g=[0, 10, 22]),
+    IvaGasPercentages(date=date(2025, 1, 1), iva_g=[0, 10, 22]),
+]
 
 
 # ACCISE GAS CIVILE
@@ -252,134 +254,20 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
             30987,
         ],
     ),
-    AddizionaleGasCivilePercentages(
-        date=date(2025, 1, 1),
-        region=[
-            "Abruzzo",
-            "Abruzzo (fascia e ed f)",
-            "Basilicata",
-            "Calabria",
-            "Emilia-romagna",
-            "Friuli v.g.",
-            "Lazio",
-            "Lazio (ex casmez)",
-            "Liguria (fascia climatica e)",
-            "Liguria (fascia climatica f)",
-            "Liguria (fascia climatica c/d)",
-            "Lombardia",
-            "Molise",
-            "Marche",
-            "Puglia",
-            "Piemonte",
-            "Sardegna",
-            "Sicilia",
-            "Trentino aa.",
-            "Toscana",
-            "UmbriaV.d'aosta",
-            "Veneto",
-        ],
-        scaglione_civ=[120, 480, 1560, 9999],
-        addizionale_120=[
-            19000,
-            10330,
-            19000,
-            19000,
-            22000,
-            0,
-            22000,
-            19000,
-            15500,
-            10300,
-            22000,
-            0,
-            19000,
-            15500,
-            19000,
-            22000,
-            0,
-            0,
-            0,
-            0,
-            5165,
-            0,
-            7747,
-        ],
-        addizionale_480=[
-            23241,
-            10330,
-            25823,
-            25820,
-            30987,
-            0,
-            30990,
-            30990,
-            15500,
-            10300,
-            258000,
-            0,
-            30987,
-            18100,
-            30980,
-            25800,
-            0,
-            0,
-            0,
-            30987,
-            5165,
-            0,
-            23241,
-        ],
-        addizionale_1560=[
-            25823,
-            10330,
-            25823,
-            25820,
-            30987,
-            0,
-            30990,
-            30990,
-            15500,
-            10300,
-            258000,
-            0,
-            30987,
-            18100,
-            30980,
-            25800,
-            0,
-            0,
-            0,
-            30987,
-            5165,
-            0,
-            25823,
-        ],
-        addizionale_9999=[
-            25823,
-            10330,
-            25823,
-            30990,
-            30987,
-            0,
-            30990,
-            30990,
-            15500,
-            10300,
-            258000,
-            0,
-            30987,
-            25800,
-            30980,
-            25800,
-            0,
-            0,
-            0,
-            30987,
-            5165,
-            0,
-            30987,
-        ],
-    ),
+    #     AddizionaleGasCivilePercentages(
+    #         date=date(2025, 1, 1),
+    #         region=["Abruzzo","Abruzzo (fascia e ed f)","Basilicata","Calabria","Emilia-romagna","Friuli v.g.","Lazio","Lazio (ex casmez)","Liguria (fascia climatica e)","Liguria (fascia climatica f)","Liguria (fascia climatica c/d)","Lombardia","Molise","Marche","Puglia","Piemonte","Sardegna","Sicilia","Trentino aa.","Toscana","UmbriaV.d'aosta","Veneto",
+    #         ],
+    #         scaglione_civ=[120, 480, 1560, 9999],
+    #         addizionale_120=[19000,10330,19000,19000,22000,0,22000,19000,15500,10300,22000,0,19000,15500,19000,22000,0,0,0,0,5165,0,7747,
+    #         ],
+    #         addizionale_480=[23241,10330,25823,25820,30987,0,30990,30990,15500,10300,258000,0,30987,18100,30980,25800,0,0,0,30987,5165,0,23241,
+    #         ],
+    #         addizionale_1560=[25823,10330,25823,25820,30987,0,30990,30990,15500,10300,258000,0,30987,18100,30980,25800,0,0,0,30987,5165,0,25823,
+    #         ],
+    #         addizionale_9999=[25823,10330,25823,30990,30987,0,30990,30990,15500,10300,258000,0,30987,25800,30980,25800,0,0,0,30987,5165,0,30987,
+    #         ],
+    #     ),
 ]
 
 
@@ -387,171 +275,35 @@ addizionale_gas_civile_percentages: list[AddizionaleGasCivilePercentages] = [
 # A statuto speciale: FRIULI V.G. , SARDEGNA, SICILIA, TRENTINO AA., V.D'AOSTA
 class AddizionaleGasIndustrialePercentages(BaseModel):
     date: date
-    region: list[str]
-    scaglione_ind: list[int]  # [12, 9999]
-    addizionale_12: list[int]  # < 1,2 M(m3)
-    addizionale_99: list[int]  # > 1,2 M(m3)
+    # region: list[str]
+    # scaglione_ind: list[int]  # [12, 9999]
+    # addizionale_12: list[int]  # < 1,2 M(m3)
+    # addizionale_99: list[int]  # > 1,2 M(m3)
 
 
-# addizionale_gas_civile_percentages: list[AddizionaleGasIndustrialePercentages] = []
-addizionale_gas_industriale_percentages: list[AddizionaleGasIndustrialePercentages] = [
-    AddizionaleGasIndustrialePercentages(
-        date=date(2024, 1, 1),
-        region=[
-            "Abruzzo",
-            "Abruzzo (fascia e ed f)",
-            "Basilicata",
-            "Calabria",
-            "Emilia-romagna",
-            "Friuli v.g.",
-            "Lazio",
-            "Lazio (ex casmez)",
-            "Liguria (fascia climatica e)",
-            "Liguria (fascia climatica f)",
-            "Liguria (fascia climatica c/d)",
-            "Lombardia",
-            "Molise",
-            "Marche",
-            "Puglia",
-            "Piemonte",
-            "Sardegna",
-            "Sicilia",
-            "Trentino aa.",
-            "Toscana",
-            "UmbriaV.d'aosta",
-            "Veneto",
-        ],
-        scaglione_ind=[12, 9999],
-        addizionale_12=[
-            6249,
-            6249,
-            6249,
-            6249,
-            6249,
-            0,
-            6249,
-            6249,
-            6249,
-            6249,
-            6249,
-            0,
-            6200,
-            6249,
-            6249,
-            6249,
-            0,
-            0,
-            0,
-            6000,
-            5165,
-            0,
-            6249,
-        ],
-        addizionale_99=[
-            5160,
-            5160,
-            5165,
-            5165,
-            5165,
-            0,
-            5160,
-            5160,
-            5200,
-            5200,
-            5200,
-            0,
-            5200,
-            5200,
-            5165,
-            5200,
-            0,
-            0,
-            0,
-            5200,
-            5165,
-            0,
-            5165,
-        ],  # > 1,2 M(m3)
-    ),
-    AddizionaleGasIndustrialePercentages(
-        date=date(2025, 1, 1),
-        region=[
-            "Abruzzo",
-            "Abruzzo (fascia e ed f)",
-            "Basilicata",
-            "Calabria",
-            "Emilia-romagna",
-            "Friuli v.g.",
-            "Lazio",
-            "Lazio (ex casmez)",
-            "Liguria (fascia climatica e)",
-            "Liguria (fascia climatica f)",
-            "Liguria (fascia climatica c/d)",
-            "Lombardia",
-            "Molise",
-            "Marche",
-            "Puglia",
-            "Piemonte",
-            "Sardegna",
-            "Sicilia",
-            "Trentino aa.",
-            "Toscana",
-            "UmbriaV.d'aosta",
-            "Veneto",
-        ],
-        scaglione_ind=[12, 9999],
-        addizionale_12=[
-            6249,
-            6249,
-            6249,
-            6249,
-            6249,
-            0,
-            6249,
-            6249,
-            6249,
-            6249,
-            6249,
-            0,
-            6200,
-            6249,
-            6249,
-            6249,
-            0,
-            0,
-            0,
-            6000,
-            5165,
-            0,
-            6249,
-        ],
-        addizionale_99=[
-            5160,
-            5160,
-            5165,
-            5165,
-            5165,
-            0,
-            5160,
-            5160,
-            5200,
-            5200,
-            5200,
-            0,
-            5200,
-            5200,
-            5165,
-            5200,
-            0,
-            0,
-            0,
-            5200,
-            5165,
-            0,
-            5165,
-        ],  # > 1,2 M(m3)
-    ),
-]
+addizionale_gas_industriale_percentages: list[AddizionaleGasIndustrialePercentages] = []
+# addizionale_gas_industriale_percentages: list[AddizionaleGasIndustrialePercentages] = [
+#     AddizionaleGasIndustrialePercentages(
+#         date=date(2024, 1, 1),
+#         region=["Abruzzo","Abruzzo (fascia e ed f)","Basilicata","Calabria","Emilia-romagna","Friuli v.g.","Lazio","Lazio (ex casmez)","Liguria (fascia climatica e)","Liguria (fascia climatica f)","Liguria (fascia climatica c/d)","Lombardia","Molise","Marche","Puglia","Piemonte","Sardegna","Sicilia","Trentino aa.","Toscana","UmbriaV.d'aosta","Veneto",
+#         ],
+#         scaglione_ind=[12, 9999],
+#         addizionale_12=[6249,6249,6249,6249,6249,0,6249,6249,6249,6249,6249,0,6200,6249,6249,6249,0,0,0,6000,5165,0,6249,
+#         ],
+#         addizionale_99=[5160,5160,5165,5165,5165,0,5160,5160,5200,5200,5200,0,5200,5200,5165,5200,0,0,0,5200,5165,0,5165,
+#         ],  # > 1,2 M(m3)
+#     ),
+#     AddizionaleGasIndustrialePercentages(
+#         date=date(2025, 1, 1),
+#         region=["Abruzzo","Abruzzo (fascia e ed f)","Basilicata","Calabria","Emilia-romagna","Friuli v.g.","Lazio","Lazio (ex casmez)","Liguria (fascia climatica e)","Liguria (fascia climatica f)","Liguria (fascia climatica c/d)","Lombardia","Molise","Marche","Puglia","Piemonte","Sardegna","Sicilia","Trentino aa.","Toscana","UmbriaV.d'aosta","Veneto",
+#         ],
+#         scaglione_ind=[12, 9999],
+#         addizionale_12=[6249,6249,6249,6249,6249,0,6249,6249,6249,6249,6249,0,6200,6249,6249,6249,0,0,0,6000,5165,0,6249,
+#         ],
+#         addizionale_99=[5160,5160,5165,5165,5165,0,5160,5160,5200,5200,5200,0,5200,5200,5165,5200,0,0,0,5200,5165,0,5165,
+#         ],  # > 1,2 M(m3)
+#     ),
+# ]
 
 # print(IvaPercentages(date=date.today(), iva=[0, 10, 22]))
 # print(AccisePercentages(date=date.today(), iva=[227, 125, 75]))
@@ -633,14 +385,14 @@ async def read_gas_accises() -> list[AcciseGasCivilePercentages]:
 #  ADDIZIONALE CIVILE
 @app.post("/gas/addizciv", response_model=AddizionaleGasCivilePercentages)
 async def add_gas_addiz_civ(
-    addiz_civ: AddizionaleGasCivilePercentages,
+    addizionale: AddizionaleGasCivilePercentages,
 ) -> AddizionaleGasCivilePercentages:
-    addiz_civ.date = date.today()  # datetime.now()
-    addizionale_gas_civile_percentages.append(addiz_civ)
-    return addiz_civ
+    addizionale.date = date.today()  # datetime.now()
+    addizionale_gas_civile_percentages.append(addizionale)
+    return addizionale
 
 
-@app.get("/gas/addizciv", response_model=AddizionaleGasCivilePercentages)
+@app.get("/gas/addizciv", response_model=list[AddizionaleGasCivilePercentages])
 async def read_gas_addiz_civ() -> list[AddizionaleGasCivilePercentages]:
     return addizionale_gas_civile_percentages
 
@@ -648,11 +400,11 @@ async def read_gas_addiz_civ() -> list[AddizionaleGasCivilePercentages]:
 #  ADDIZIONALE INDUSTRIALE
 @app.post("/gas/addizind", response_model=AddizionaleGasIndustrialePercentages)
 async def add_gas_addiz_ind(
-    addiz_ind: AddizionaleGasIndustrialePercentages,
+    addizionale: AddizionaleGasIndustrialePercentages,
 ) -> AddizionaleGasIndustrialePercentages:
-    addiz_ind.date = date.today()  # datetime.now()
-    addizionale_gas_industriale_percentages.append(addiz_ind)
-    return addiz_ind
+    addizionale.date = date.today()  # datetime.now()
+    addizionale_gas_industriale_percentages.append(addizionale)
+    return addizionale
 
 
 @app.get("/gas/addizind", response_model=AddizionaleGasIndustrialePercentages)
